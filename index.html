@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content='width=device-width,initial-scale=1.0'>
+        <title>Pomodoro</title>
+        <link rel="stylesheet" href="index.css">
+    </head>
+    <body>
+        <h1 id="header">Pomodoro</h1>
+        <div class="time-container">
+            <span id='min' class="show-time">25</span>
+            <span id='dot' class="show-time">:</span>
+            <span id='sec' class="show-time">00</span>
+        </div>
+
+        <div class="controls">
+            <a href='#' class="cbutton" id="reset" onclick="reset_setting(this)"><img src="images/reset.png"></a>
+            <a href="#" class='cbutton' id="start"><img src="images/play.png" id='ctrl-image'></a>
+            <a href="#" class='cbutton' id="change-setting"><img src='images/setting.png'></a>
+        </div>
+
+        <div class='buttons'>
+            <a class="pbutton" id="focus">FOCUS</a>
+            <a class="pbutton" id="short">SHORT BREAK</a>
+            <a class="pbutton" id="long">LONG BREAK</a>
+        </div>
+        <div id="setting-option">
+            <a href="#" id="close"><img src='images/close.png' width="30"></a><br><br>
+            <p class="setting-font">FOCUS</p>
+            <input type="number" id='work' min='25' max='60' step="5" value='25'>
+            <p class="setting-font">Short Break</p>
+            <input type='number' id="sbreak" min="5" max="10" step="1" value="5">
+            <p class="setting-font">Long Break</p>
+            <input type="number" id="lbreak" min="15" max='30' step="5" value="15">
+            <a href="#" id="apply" onclick="reset_setting(this)">Apply</a>
+        </div>
+
+        <div class="card-container">
+          <div class="card">
+            <img src="images/alarm-clock.svg">
+            <p class="desc-p">Decide on the task to be done.Set the pomodoro timer (traditionally to 25 minutes).</p>
+          </div>
+          <div class="card">
+            <img src="images/break-time.svg">
+            <p class="desc-p">End work when the timer rings take a short break (3–10 minutes).</p>
+          </div>
+          <div class="card">
+            <img src="images/replay.svg">
+            <p class="desc-p">Set the pomodoro timer again and work on next task.Take a longer break(15-30 minutes) after 4 or 5 tasks.</p>
+          </div>
+        </div>
+        <div class="container">
+          <footer>
+              <div id='footer'>
+                <div class='button-container'>
+                  <a class="github-button" href="https://github.com/Juhi3921" data-size="large" aria-label="Follow">Follow </a>
+                  <!-- Place this tag where you want the button to render. -->
+                </div>
+              </div>
+          </footer>
+      </div>
+        <script src="index.js"></script>
+        <!-- Place this tag in your head or just before your close body tag. -->
+        <script async defer src="https://buttons.github.io/buttons.js"></script>
+    </body>
+</html>
