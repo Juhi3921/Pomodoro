@@ -489,9 +489,7 @@ function initQuickLinks() {
   renderLinks();
 }
 
-/* ==========================================
-   6. WEATHER WIDGET BOARD
-   ========================================== */
+
 function initWeatherWidget() {
   const cityEl = document.getElementById('weather-city');
   const tempEl = document.getElementById('weather-temp');
