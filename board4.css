@@ -1,0 +1,581 @@
+/* BOARD 4 CSS - NEW DESK UTILITIES */
+
+/* Common Header Styles */
+#sticky-notes-board h2,
+#water-tracker-board h2,
+#posture-reminder-board h2,
+#calculator-board h2 {
+  text-align: center;
+  color: #fff;
+  font-size: 2rem;
+  margin-bottom: 1rem;
+  text-shadow: 0 5px 15px rgba(0, 0, 0, 0.199), 0 6px 6px rgba(0, 0, 0, 0.404);
+}
+
+/* 1. SCRATCHPAD (Sticky Notes) */
+.sticky-notes-container {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 15px;
+  justify-content: center;
+  margin-bottom: 1.5rem;
+  max-height: 280px;
+  overflow-y: auto;
+  padding: 5px;
+}
+
+/* Scrollbar for notes container */
+.sticky-notes-container::-webkit-scrollbar {
+  width: 6px;
+}
+.sticky-notes-container::-webkit-scrollbar-thumb {
+  background: rgba(0, 0, 0, 0.2);
+  border-radius: 3px;
+}
+
+.sticky-note {
+  width: 140px;
+  height: 140px;
+  padding: 10px;
+  box-shadow: 0 5px 10px rgba(0, 0, 0, 0.15);
+  display: flex;
+  flex-direction: column;
+  position: relative;
+  transition: transform 0.2s, box-shadow 0.2s;
+  border-radius: 4px;
+}
+
+.sticky-note:hover {
+  transform: scale(1.05) rotate(0deg) !important;
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.25);
+  z-index: 10;
+}
+
+/* Tilt alternate notes slightly for realistic paper look */
+.sticky-note:nth-child(even) {
+  transform: rotate(2deg);
+}
+.sticky-note:nth-child(odd) {
+  transform: rotate(-1.5deg);
+}
+
+.sticky-note-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 6px;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.08);
+  padding-bottom: 4px;
+}
+
+.note-color-dot {
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  border: 1px solid rgba(0, 0, 0, 0.2);
+  cursor: pointer;
+  background-color: var(--theme-color);
+  transition: transform 0.1s;
+}
+.note-color-dot:hover {
+  transform: scale(1.2);
+}
+
+.note-delete-btn {
+  background: none;
+  border: none;
+  font-size: 14px;
+  color: rgba(0, 0, 0, 0.4);
+  cursor: pointer;
+  padding: 0;
+  line-height: 1;
+  transition: color 0.2s;
+}
+.note-delete-btn:hover {
+  color: #d9534f;
+}
+
+.sticky-note-body {
+  width: 100%;
+  flex-grow: 1;
+  background: transparent;
+  border: none;
+  resize: none;
+  outline: none;
+  font-family: inherit;
+  font-size: 0.95em;
+  line-height: 1.3;
+  color: #333;
+}
+
+/* Post-it color variations */
+.note-yellow { background-color: #fff7b1; }
+.note-pink   { background-color: #ffc4d0; }
+.note-blue   { background-color: #bbf1fa; }
+.note-green  { background-color: #c8f7c5; }
+
+.sticky-controls {
+  text-align: center;
+}
+
+
+/* 2. WATER TRACKER */
+.water-progress-container {
+  display: flex;
+  justify-content: center;
+  margin: 1.5rem 0;
+}
+
+.glass-visual {
+  width: 90px;
+  height: 160px;
+  border: 4px solid rgba(255, 255, 255, 0.95);
+  border-top: none;
+  border-radius: 0 0 24px 24px;
+  position: relative;
+  background: rgba(255, 255, 255, 0.08);
+  overflow: hidden;
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.15);
+}
+
+/* Glass shine overlay */
+.glass-visual::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 5px;
+  width: 12px;
+  height: 100%;
+  background: linear-gradient(to right, rgba(255, 255, 255, 0.25), transparent);
+  z-index: 5;
+  pointer-events: none;
+}
+
+.water-level {
+  width: 100%;
+  height: 0%; /* Dynamic height in JS */
+  background: linear-gradient(180deg, #5dade2 0%, #2980b9 100%);
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  transition: height 0.6s cubic-bezier(0.1, 0.8, 0.3, 1);
+}
+
+/* Animated wave effect */
+.water-level::after {
+  content: '';
+  position: absolute;
+  top: -8px;
+  left: 0;
+  width: 200%;
+  height: 10px;
+  background: radial-gradient(circle at 50% 100%, #5dade2 40%, transparent 45%);
+  background-size: 20px 20px;
+  animation: waterWave 3s infinite linear;
+}
+
+@keyframes waterWave {
+  0% { transform: translateX(0); }
+  100% { transform: translateX(-50%); }
+}
+
+.water-percentage {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  color: #fff;
+  font-weight: bold;
+  font-size: 1.4rem;
+  z-index: 6;
+  text-shadow: 0 2px 4px rgba(0, 0, 0, 0.5);
+  pointer-events: none;
+}
+
+.water-cups {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 12px;
+  max-width: 200px;
+  margin: 1.5rem auto;
+  justify-items: center;
+}
+
+.water-cup {
+  font-size: 1.8rem;
+  color: rgba(255, 255, 255, 0.35);
+  cursor: pointer;
+  transition: transform 0.15s, color 0.15s;
+}
+
+.water-cup:hover {
+  transform: scale(1.25);
+  color: rgba(255, 255, 255, 0.75);
+}
+
+.water-cup.active {
+  color: #5dade2;
+  text-shadow: 0 0 10px rgba(93, 173, 226, 0.8);
+}
+
+.water-controls {
+  text-align: center;
+}
+
+
+/* 3. DESK ALERTS (Posture Reminder) */
+.reminder-card {
+  background-color: var(--hero-color);
+  color: white;
+  border-radius: 1.5em;
+  padding: 1.8em;
+  text-align: center;
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1), 0 6px 6px rgba(0, 0, 0, 0.1);
+}
+
+.reminder-timer {
+  font-size: 3.5rem;
+  color: rgba(255, 255, 255, 0.95);
+  font-family: monospace;
+  margin-bottom: 10px;
+  text-shadow: 0 0 10px rgba(255, 255, 255, 0.3);
+}
+
+.reminder-controls {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 8px;
+  margin-bottom: 1.5em;
+}
+
+.reminder-controls label {
+  font-size: 0.9em;
+  letter-spacing: 1px;
+  opacity: 0.85;
+}
+
+.reminder-controls select {
+  padding: 8px 12px;
+  font-size: 1em;
+  background-color: var(--hero2-color);
+  color: white;
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  border-radius: 8px;
+  outline: none;
+  cursor: pointer;
+}
+
+.reminder-buttons {
+  display: flex;
+  justify-content: center;
+}
+
+
+/* 4. DESK QUICK-CALCULATOR */
+.calculator {
+  background-color: rgba(15, 1, 4, 0.85);
+  border-radius: 1.2em;
+  padding: 1.2em;
+  box-shadow: 0 12px 24px rgba(0, 0, 0, 0.3);
+}
+
+.calc-display {
+  background-color: rgba(0, 0, 0, 0.5);
+  color: #00ffcc;
+  font-family: monospace;
+  font-size: 1.8rem;
+  padding: 10px 15px;
+  border-radius: 8px;
+  text-align: right;
+  min-height: 58px;
+  margin-bottom: 12px;
+  word-break: break-all;
+  box-shadow: inset 0 2px 5px rgba(0,0,0,0.8);
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+}
+
+.calc-buttons {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 8px;
+}
+
+.calc-btn {
+  font-size: 1.15rem;
+  font-weight: bold;
+  padding: 12px 0;
+  border-radius: 10px;
+  border: none;
+  cursor: pointer;
+  transition: background-color 0.15s, transform 0.1s;
+}
+
+.calc-btn:active {
+  transform: scale(0.95);
+}
+
+/* Calculator themes based on parent project palette */
+.calc-btn.num {
+  background-color: rgba(255, 255, 255, 0.9);
+  color: #333;
+}
+.calc-btn.num:hover {
+  background-color: #fff;
+}
+
+.calc-btn.op {
+  background-color: var(--hero-color);
+  color: #fff;
+}
+.calc-btn.op:hover {
+  background-color: var(--hero2-color);
+}
+
+.calc-btn.eq {
+  background-color: #ad2831;
+  color: #fff;
+  grid-column: span 2; /* Spans 2 columns to fill layout nicely */
+}
+.calc-btn.eq:hover {
+  background-color: #640d14;
+}
+
+/* Styles for zero button */
+.calc-btn.zero {
+  grid-column: span 1;
+}
+
+/* 5. QUICK-LINKS BOARD */
+.quick-links-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 15px;
+  margin: 1.5rem 0;
+}
+
+.shortcut-item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  background-color: var(--hero-color);
+  border-radius: 15px;
+  padding: 15px;
+  color: white;
+  text-decoration: none;
+  box-shadow: 0 5px 10px rgba(0, 0, 0, 0.15);
+  transition: transform 0.2s, box-shadow 0.2s, background-color 0.2s;
+  position: relative;
+}
+
+.shortcut-item:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.25);
+  background-color: var(--hero2-color);
+}
+
+.shortcut-icon {
+  font-size: 2rem;
+  margin-bottom: 6px;
+  text-shadow: 0 2px 4px rgba(0,0,0,0.2);
+}
+
+.shortcut-name {
+  font-size: 0.85em;
+  font-weight: bold;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  text-align: center;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  width: 100%;
+}
+
+.shortcut-delete {
+  position: absolute;
+  top: -6px;
+  right: -6px;
+  background: #ad2831;
+  color: white;
+  width: 22px;
+  height: 22px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 14px;
+  font-weight: bold;
+  cursor: pointer;
+  box-shadow: 0 2px 5px rgba(0,0,0,0.3);
+  border: 1px solid white;
+  transition: transform 0.15s;
+  z-index: 5;
+}
+
+.shortcut-delete:hover {
+  transform: scale(1.2);
+}
+
+.quick-links-controls {
+  text-align: center;
+}
+
+#add-link-form input {
+  padding: 10px;
+  border-radius: 8px;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  background-color: var(--hero-color);
+  color: white;
+  outline: none;
+}
+#add-link-form input::placeholder {
+  color: rgba(255, 255, 255, 0.5);
+}
+
+
+/* 6. WEATHER WIDGET BOARD */
+.weather-widget {
+  background-color: rgba(15, 1, 4, 0.85);
+  border-radius: 1.2em;
+  padding: 1.5em;
+  box-shadow: 0 12px 24px rgba(0, 0, 0, 0.3);
+  color: white;
+  text-align: center;
+}
+
+.weather-header {
+  font-size: 1.4rem;
+  font-weight: bold;
+  margin-bottom: 12px;
+  letter-spacing: 0.5px;
+  text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+}
+
+.weather-info {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  margin: 1rem 0;
+}
+
+.weather-temp-container {
+  display: flex;
+  align-items: baseline;
+}
+
+#weather-temp {
+  font-size: 3rem;
+  font-weight: bold;
+  text-shadow: 0 2px 5px rgba(0,0,0,0.5);
+}
+
+.temp-unit {
+  font-size: 1.3rem;
+  margin-left: 2px;
+  opacity: 0.85;
+}
+
+.weather-icon-container {
+  font-size: 3.2rem;
+  width: 70px;
+  height: 70px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* Weather animations for premium look */
+.weather-sun {
+  color: #ffeb3b;
+  text-shadow: 0 0 15px rgba(255, 235, 59, 0.6);
+  animation: spinSun 24s infinite linear;
+}
+
+@keyframes spinSun {
+  from { transform: rotate(0deg); }
+  to { transform: rotate(360deg); }
+}
+
+.weather-cloud {
+  color: #e0e0e0;
+  text-shadow: 0 2px 5px rgba(0,0,0,0.3);
+  animation: floatCloud 4s infinite ease-in-out;
+}
+
+@keyframes floatCloud {
+  0% { transform: translateY(0); }
+  50% { transform: translateY(-6px); }
+  100% { transform: translateY(0); }
+}
+
+.weather-rain {
+  color: #80deea;
+  text-shadow: 0 0 10px rgba(128, 222, 234, 0.4);
+  animation: rainFloat 3s infinite ease-in-out;
+}
+
+@keyframes rainFloat {
+  0% { transform: translateY(0) scaleY(1); }
+  50% { transform: translateY(-4px) scaleY(0.95); }
+  100% { transform: translateY(0) scaleY(1); }
+}
+
+.weather-snow {
+  color: #e3f2fd;
+  text-shadow: 0 0 10px rgba(227, 242, 253, 0.5);
+  animation: floatSnow 5s infinite ease-in-out;
+}
+
+@keyframes floatSnow {
+  0% { transform: translateY(0) rotate(0deg); }
+  50% { transform: translateY(-3px) rotate(15deg); }
+  100% { transform: translateY(0) rotate(0deg); }
+}
+
+.weather-storm {
+  color: #b0bec5;
+  text-shadow: 0 0 12px rgba(176, 190, 197, 0.5);
+  animation: stormShake 0.5s infinite alternate;
+}
+
+@keyframes stormShake {
+  0% { transform: translate(1px, 1px) rotate(0deg); }
+  100% { transform: translate(-1px, -1px) rotate(-1deg); }
+}
+
+.weather-desc {
+  font-size: 1.1rem;
+  text-transform: capitalize;
+  opacity: 0.85;
+  margin-bottom: 5px;
+}
+
+#weather-search-form input {
+  padding: 8px 12px;
+  border-radius: 8px;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  background-color: var(--hero-color);
+  color: white;
+  outline: none;
+}
+#weather-search-form input::placeholder {
+  color: rgba(255, 255, 255, 0.4);
+}
+
+#weather-search-form button {
+  background-color: #ad2831;
+  color: white;
+  border: none;
+  border-radius: 8px;
+  font-weight: bold;
+  cursor: pointer;
+  transition: background-color 0.15s;
+}
+#weather-search-form button:hover {
+  background-color: #640d14;
+}
+

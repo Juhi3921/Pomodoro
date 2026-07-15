@@ -1,0 +1,101 @@
+:root {
+  --hero-color: #38040e;
+  --hero2-color: #530515;
+  --to-do-items: #300000;
+}
+
+.main {
+  width: 90%;
+  height: 95%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  margin: auto;
+}
+
+#three h2 {
+  text-align: center;
+  color: #fff;
+  font-size: 2rem;
+  text-shadow: 0 5px 15px rgba(0, 0, 0, 0.199), 0 6px 6px rgba(0, 0, 0, 0.404);
+}
+
+form {
+  display: flex;
+  justify-content: space-between;
+  background-color: #38040e;
+  padding: 0.5rem;
+  border-radius: 1rem;
+  box-sizing: border-box;
+}
+
+input[type="text"] {
+  padding-left: 1em;
+  width: 70%;
+  outline: 0;
+  border: none;
+  font-size: 1.2rem;
+  background: #38040e;
+  color: white;
+  cursor: pointer;
+}
+
+input[type="checkbox"] {
+  background-color: var(--hero-color);
+  cursor: pointer;
+  appearance: auto;
+  padding: initial;
+  border: initial;
+}
+
+#three button {
+  font-size: 1em;
+  color: white;
+  background-color: var(--hero-color);
+  outline: 0;
+  border: 0;
+  font-weight: bold;
+  padding: 0.5rem;
+  width: 20%;
+  cursor: pointer;
+}
+
+.tasksBoard {
+  background-color: #fff;
+  margin: 1.5rem auto;
+  width: 100%;
+  padding: 0.5rem;
+  padding-right: 2.1rem;
+  border-radius: 1rem;
+  overflow: auto;
+  /*display: none;*/
+}
+
+ul {
+  list-style: none;
+}
+
+li {
+  border-bottom: 1px solid #53bdff;
+  padding-bottom: 0.6rem;
+  padding-top: 1em;
+  font-size: 1.3em;
+  color: var(--to-do-items);
+}
+
+a {
+  float: right;
+  color: var(--hero2-color);
+  font-size: 1.3em;
+  padding: 0.5em 0;
+}
+
+.delete {
+  background-color: var(--hero-color);
+  float: right;
+  padding: 0 0.3em;
+  text-align: center;
+  color: #fff;
+  cursor: pointer;
+  border-radius: 1em;
+}

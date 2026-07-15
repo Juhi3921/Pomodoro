@@ -1,66 +1,257 @@
 <!DOCTYPE html>
-    <head>
-        <meta charset="utf-8">
-        <meta name="viewport" content='width=device-width,initial-scale=1.0'>
-        <title>Pomodoro</title>
-        <link rel="stylesheet" href="index.css">
-    </head>
-    <body>
-        <h1 id="header">Pomodoro</h1>
-        <div class="time-container">
-            <span id='min' class="show-time">25</span>
-            <span id='dot' class="show-time">:</span>
-            <span id='sec' class="show-time">00</span>
-        </div>
+<html lang="en">
 
-        <div class="controls">
-            <a href='#' class="cbutton" id="reset" onclick="reset_setting(this)"><img src="images/reset.png"></a>
-            <a href="#" class='cbutton' id="start"><img src="images/play.png" id='ctrl-image'></a>
-            <a href="#" class='cbutton' id="change-setting"><img src='images/setting.png'></a>
-        </div>
+<head>
+          <meta charset="UTF-8">
+          <meta http-equiv="X-UA-Compatible" content="IE=edge">
+          <meta name="viewport" content="width=device-width, initial-scale=1.0">
+          <title>Work Board</title>
+          <link rel="stylesheet" href="./board1.css">
+          <link rel="stylesheet" href="./board2.css">
+          <link rel="stylesheet" href="./board3.css">
+          <link rel="stylesheet" href="./board4.css">
+          <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css"
+                    integrity="sha512-1ycn6IcaQQ40/MKBW2W4Rhis/DbILU74C1vSrLJxCq57o941Ym01SwNsOMqvEBFlcgUa6xLiPY/NS5R+E6ztJQ=="
+                    crossorigin="anonymous" referrerpolicy="no-referrer" />
 
-        <div class='buttons'>
-            <a class="pbutton" id="focus">FOCUS</a>
-            <a class="pbutton" id="short">SHORT BREAK</a>
-            <a class="pbutton" id="long">LONG BREAK</a>
-        </div>
-        <div id="setting-option">
-            <a href="#" id="close"><img src='images/close.png' width="30"></a><br><br>
-            <p class="setting-font">FOCUS</p>
-            <input type="number" id='work' min='25' max='60' step="5" value='25'>
-            <p class="setting-font">Short Break</p>
-            <input type='number' id="sbreak" min="5" max="10" step="1" value="5">
-            <p class="setting-font">Long Break</p>
-            <input type="number" id="lbreak" min="15" max='30' step="5" value="15">
-            <a href="#" id="apply" onclick="reset_setting(this)">Apply</a>
-        </div>
+</head>
 
-        <div class="card-container">
-          <div class="card">
-            <img src="images/alarm-clock.svg">
-            <p class="desc-p">Decide on the task to be done.Set the pomodoro timer (traditionally to 25 minutes).</p>
+<body>
+          <h1>WORK BOARD</h1>
+          <div class="container">
+                    <div class="board" id="one">
+                              <div class="card">
+                                        <div class="header-calendar">
+
+                                                  <span><i class="fas fa-caret-left fa-lg"></i></span>
+
+                                                  <div class="big-year" id="yearNum">
+                                                  </div>
+
+                                                  <span><i class="fas fa-caret-right fa-lg"></i></span>
+                                        </div>
+                                        <div class="months">
+                                        </div>
+                                        <hr class="month-line" />
+                                        <table class="calendar-table" id="calendar">
+                                                  <thead>
+                                                            <tr>
+                                                                      <th class="days-of-week">Sun</th>
+                                                                      <th class="days-of-week">Mon</th>
+                                                                      <th class="days-of-week">Tue</th>
+                                                                      <th class="days-of-week">Wed</th>
+                                                                      <th class="days-of-week">Thu</th>
+                                                                      <th class="days-of-week">Fri</th>
+                                                                      <th class="days-of-week">Sat</th>
+                                                            </tr>
+                                                  </thead>
+                                                  <tbody id="calendar-body">
+                                                  </tbody>
+                                        </table>
+                              </div>
+                              <div class="quote">
+                                        <h2>Little bit of motivation</h2>
+                                        <div id="message" class="message"></div>
+                                        <div class="btndiv"><button id="messageBtn" class="btn">Hit me!</button></div>
+                              </div>
+
+                    </div>
+
+                    <div class="board" id="two">
+
+                              <div class="control clearfix">
+
+                                        <div class="control-session">
+                                                  <span class="control-title">session</span>
+                                                  <div class="session-option">
+                                                            <i class="fa fa-minus-circle" id="session-minus"></i>
+                                                            <span id="session">25</span> <i class="fa fa-plus-circle"
+                                                                      id="session-plus"></i>
+                                                  </div>
+                                        </div>
+
+                                        <div class="control-break">
+                                                  <span class="control-title">break</span>
+                                                  <div class="session-option">
+                                                            <i class="fa fa-minus-circle" id="break-minus"></i> <span
+                                                                      id="break">5</span> <i class="fa fa-plus-circle"
+                                                                      id="break-plus"></i>
+                                                  </div>
+                                        </div>
+
+                              </div>
+
+                              <div class="pomodoro glow">
+                                        <div class="pomodoro-center">
+                                                  <div class="status">session</div>
+                                                  <div class="timer">25:00</div>
+                                        </div>
+                                        <div class="flex-buttons">
+                                                  <button class="button" id="switch"><i
+                                                                      class="fa fa-exchange"></i></button>
+                                                  <button class="button" id="reset"><i
+                                                                      class="fa fa-refresh"></i></button>
+                                                  <button class="button" id="toggle"><i class="fa fa-play"></i></button>
+                                        </div>
+
+                              </div>
+                    </div>
+
+                    <div class="board" id="three">
+                              <div class="main">
+                                        <h2>TO-DO LIST</h2>
+                                        <form class="" action="index.html" method="post">
+                                                  <input type="text" placeholder="Add a new task" name="task">
+                                                  <button type="submit">ADD</button>
+                                        </form>
+                                        <div class="tasksBoard">
+                                                  <ul>
+                                                            <li><span class="delete">x</span><input
+                                                                                type="checkbox"><label>Read one
+                                                                                chapter</label>
+                                                            </li>
+                                                            <li><span class="delete">x</span><input
+                                                                                type="checkbox"><label>Update
+                                                                                project</label>
+                                                            </li>
+                                                            <li><span class="delete">x</span><input
+                                                                                type="checkbox"><label>Write a
+                                                                                mail</label>
+                                                            </li>
+
+                                                  </ul>
+                                                  <a id="clear">Clear</a>
+                                        </div>
+                              </div>
+
+                    </div>
+
+                    <div class="board" id="sticky-notes-board">
+                              <div class="main">
+                                        <h2>SCRATCHPAD</h2>
+                                        <div class="sticky-notes-container" id="notes-container"></div>
+                                        <div class="sticky-controls">
+                                                  <button id="add-note-btn" class="btn"><i class="fa fa-plus"></i> Add Note</button>
+                                        </div>
+                              </div>
+                    </div>
+
+                    <div class="board" id="water-tracker-board">
+                              <div class="main">
+                                        <h2>WATER TRACKER</h2>
+                                        <div class="water-progress-container">
+                                                  <div class="glass-visual">
+                                                            <div class="water-level" id="water-level"></div>
+                                                            <div class="water-percentage" id="water-percentage">0%</div>
+                                                  </div>
+                                        </div>
+                                        <div class="water-cups" id="water-cups"></div>
+                                        <div class="water-controls">
+                                                  <button id="reset-water" class="btn">Reset</button>
+                                        </div>
+                              </div>
+                    </div>
+
+                    <div class="board" id="posture-reminder-board">
+                              <div class="main">
+                                        <h2>DESK ALERTS</h2>
+                                        <div class="reminder-card">
+                                                  <div class="reminder-timer" id="reminder-timer-display">30:00</div>
+                                                  <div class="reminder-controls">
+                                                            <label for="reminder-interval">Remind every:</label>
+                                                            <select id="reminder-interval">
+                                                                      <option value="20">20 min (Eye Break)</option>
+                                                                      <option value="30" selected>30 min (Posture)</option>
+                                                                      <option value="60">60 min (Stretch)</option>
+                                                            </select>
+                                                  </div>
+                                                  <div class="reminder-buttons">
+                                                            <button id="toggle-reminder" class="btn"><i class="fa fa-play"></i> Start</button>
+                                                  </div>
+                                        </div>
+                              </div>
+                    </div>
+
+                    <div class="board" id="calculator-board">
+                              <div class="main">
+                                        <h2>CALCULATOR</h2>
+                                        <div class="calculator">
+                                                  <div class="calc-display" id="calc-display">0</div>
+                                                  <div class="calc-buttons">
+                                                            <button class="calc-btn op" data-val="C">C</button>
+                                                            <button class="calc-btn op" data-val="back"><i class="fa fa-arrow-left"></i></button>
+                                                            <button class="calc-btn op" data-val="%">%</button>
+                                                            <button class="calc-btn op" data-val="/">/</button>
+                                                            
+                                                            <button class="calc-btn num" data-val="7">7</button>
+                                                            <button class="calc-btn num" data-val="8">8</button>
+                                                            <button class="calc-btn num" data-val="9">9</button>
+                                                            <button class="calc-btn op" data-val="*">*</button>
+                                                            
+                                                            <button class="calc-btn num" data-val="4">4</button>
+                                                            <button class="calc-btn num" data-val="5">5</button>
+                                                            <button class="calc-btn num" data-val="6">6</button>
+                                                            <button class="calc-btn op" data-val="-">-</button>
+                                                            
+                                                            <button class="calc-btn num" data-val="1">1</button>
+                                                            <button class="calc-btn num" data-val="2">2</button>
+                                                            <button class="calc-btn num" data-val="3">3</button>
+                                                            <button class="calc-btn op" data-val="+">+</button>
+                                                            
+                                                            <button class="calc-btn num zero" data-val="0">0</button>
+                                                            <button class="calc-btn num" data-val=".">.</button>
+                                                            <button class="calc-btn eq" id="calc-equals" data-val="=">=</button>
+                                                  </div>
+                                        </div>
+                              </div>
+                    </div>
+
+                    <div class="board" id="quick-links-board">
+                              <div class="main">
+                                        <h2>QUICK LINKS</h2>
+                                        <div class="quick-links-grid" id="quick-links-grid">
+                                                  <!-- Dynamic shortcuts go here -->
+                                        </div>
+                                        <div class="quick-links-controls">
+                                                  <button id="edit-links-btn" class="btn"><i class="fa fa-cog"></i> Edit Links</button>
+                                        </div>
+                                        <form id="add-link-form" class="hidden-form" style="display: none; margin-top: 15px; flex-direction: column; gap: 8px;">
+                                                  <input type="text" id="link-name-input" placeholder="Shortcut Name (e.g. GitHub)" required style="width: 100%;">
+                                                  <input type="text" id="link-url-input" placeholder="URL (e.g. https://github.com)" required style="width: 100%;">
+                                                  <button type="submit" class="btn" style="width: 100%;">Add Shortcut</button>
+                                        </form>
+                              </div>
+                    </div>
+
+                    <div class="board" id="weather-board">
+                              <div class="main">
+                                        <h2>WEATHER</h2>
+                                        <div class="weather-widget">
+                                                  <div class="weather-header">
+                                                            <span id="weather-city">Detecting...</span>
+                                                  </div>
+                                                  <div class="weather-info">
+                                                            <div class="weather-temp-container">
+                                                                      <span id="weather-temp">--</span><span class="temp-unit" id="temp-unit">°C</span>
+                                                            </div>
+                                                            <div class="weather-icon-container" id="weather-icon-container">
+                                                                      <i class="fa fa-spinner fa-spin fa-2x" id="weather-icon"></i>
+                                                            </div>
+                                                  </div>
+                                                  <div class="weather-desc" id="weather-desc">Initializing location...</div>
+                                                  <form id="weather-search-form" style="margin-top: 15px; display: flex; gap: 5px;">
+                                                            <input type="text" id="weather-city-input" placeholder="Search city..." required style="width: 70%; padding: 5px 10px;">
+                                                            <button type="submit" style="width: 30%; font-size: 0.9em; padding: 5px;">Search</button>
+                                                  </form>
+                                        </div>
+                              </div>
+                    </div>
           </div>
-          <div class="card">
-            <img src="images/break-time.svg">
-            <p class="desc-p">End work when the timer rings take a short break (3–10 minutes).</p>
-          </div>
-          <div class="card">
-            <img src="images/replay.svg">
-            <p class="desc-p">Set the pomodoro timer again and work on next task.Take a longer break(15-30 minutes) after 4 or 5 tasks.</p>
-          </div>
-        </div>
-        <div class="container">
-          <footer>
-              <div id='footer'>
-                <div class='button-container'>
-                  <a class="github-button" href="https://github.com/Juhi3921" data-size="large" aria-label="Follow">Follow </a>
-                  <!-- Place this tag where you want the button to render. -->
-                </div>
-              </div>
-          </footer>
-      </div>
-        <script src="index.js"></script>
-        <!-- Place this tag in your head or just before your close body tag. -->
-        <script async defer src="https://buttons.github.io/buttons.js"></script>
-    </body>
+          <script src="./board1.js"></script>
+          <script src="./board2.js"></script>
+          <script src="./board3.js"></script>
+          <script src="./board4.js"></script>
+          <script src="https://use.fontawesome.com/1fc9b6b738.js"></script>
+</body>
+
 </html>

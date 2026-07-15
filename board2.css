@@ -1,0 +1,122 @@
+:root {
+  --hero-color: #38040e;
+  --hero2-color: #530515;
+  --pomodoro-gray-btn: #3e4348;
+}
+
+#two {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.control {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 1em;
+}
+
+.control-title {
+  font-size: 0.9em;
+  letter-spacing: 0.25em;
+}
+
+.session-option {
+  padding: 0.4em;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+#session,
+#break {
+  padding: 0 0.5em;
+}
+
+.control-session,
+.control-break {
+  width: 40%;
+  color: var(--hero2-color);
+  font-size: 1.5em;
+  text-align: center;
+}
+
+.pomodoro {
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  flex-direction: column;
+  margin: 3em auto;
+  background-color: var(--hero2-color);
+  width: 250px;
+  height: 250px;
+  border-radius: 50%;
+}
+
+.pomodoro-center {
+  text-align: center;
+}
+
+.status {
+  color: rgba(255, 255, 255, 0.815);
+  text-transform: uppercase;
+  letter-spacing: 0.25em;
+}
+
+.timer {
+  font-size: 3.5rem;
+  color: rgba(255, 255, 255, 0.911);
+}
+
+.flex-buttons {
+  display: flex;
+  justify-content: space-around;
+  align-items: baseline;
+  padding-bottom: 3em;
+}
+
+.button {
+  margin: 0.3rem;
+  border-radius: 50%;
+  width: 40px;
+  height: 40px;
+  background: #fff;
+  color: var(--pomodoro-gray-btn);
+  line-height: 36px;
+}
+
+.button:hover {
+  background: var(--pomodoro-gray-btn);
+  color: #fff;
+}
+
+.button:focus {
+  outline: none;
+}
+
+.glow {
+  -webkit-animation: glow 1.5s ease-in-out infinite alternate;
+  -moz-animation: glow 1.5s ease-in-out infinite alternate;
+  animation: glow 1.5s ease-in-out infinite alternate;
+}
+
+.break {
+  background: #e3dede;
+  border: 10px solid #fff;
+  -webkit-box-shadow: 2px 2px 2px 0 rgba(0, 0, 0, 0.5);
+  -moz-box-shadow: 2px 2px 2px 0 rgba(0, 0, 0, 0.5);
+  box-shadow: 2px 2px 2px 0 rgba(0, 0, 0, 0.5);
+}
+
+@keyframes glow {
+  from {
+    -webkit-box-shadow: 0 0 30px 0 rgba(255, 100, 100, 0.3);
+    -moz-box-shadow: 0 0 30px 0 rgba(255, 100, 100, 0.3);
+    box-shadow: 0 0 30px 0 rgba(255, 100, 100, 0.3);
+  }
+  to {
+    -webkit-box-shadow: 0 0 50px 5px var(--hero-color);
+    -moz-box-shadow: 0 0 50px 5px var(--hero-color);
+    box-shadow: 0 0 50px 5px var(--hero-color);
+  }
+}
