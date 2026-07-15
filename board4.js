@@ -382,9 +382,7 @@ function initCalculator() {
   }
 }
 
-/* ==========================================
-   5. QUICK-LINKS BOARD
-   ========================================== */
+
 function initQuickLinks() {
   const grid = document.getElementById('quick-links-grid');
   const editBtn = document.getElementById('edit-links-btn');
