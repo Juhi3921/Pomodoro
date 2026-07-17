@@ -116,29 +116,3 @@ renderMonths()
 renderCalendar(currentMonth, currentYear);
 nextYear()
 previousYear()
-
-// CALENDAR //
-
-//MOTIVATIONAL QUOTE//
-
-const message = document.getElementById('message')
-const messageBtn = document.getElementById('messageBtn')
-
-messageBtn.addEventListener('click', generateQuote)
-
-generateQuote()
-
-
-async function generateQuote() {
-          const config = {
-                    headers: {
-                              Accept: 'application/json',
-                    },
-          }
-
-          const res = await fetch('https://type.fit/api/quotes', config)
-
-          const data = await res.json()
-          let i = Math.floor((Math.random() * 500) + 1);
-          message.innerHTML = data[i].text
-}
