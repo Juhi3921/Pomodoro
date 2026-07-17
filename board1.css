@@ -23,7 +23,7 @@ background-repeat: no-repeat;
 }
 
 h1 {
-  color: rgb(24, 14, 14);
+  color: rgb(177, 144, 144);
   font-weight: bold;
 letter-spacing: 1.5px;
   font-size: 9vmin;
@@ -36,7 +36,7 @@ display:inline-block;
 }
 
 .board{
-    background:#f7f4ef;
+    background:#d1ae71;
     border:1px solid #ddd6cc;
     border-radius:16px;
     box-shadow:0 6px 14px rgba(0,0,0,.12);
