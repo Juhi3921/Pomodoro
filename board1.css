@@ -6,9 +6,7 @@
   --date-selected: #640d14;
 }
 
-* {
-  box-sizing: border-box;
-}
+
 
 body {
   margin: 0;
@@ -25,7 +23,7 @@ background-repeat: no-repeat;
 }
 
 h1 {
-  color: white;
+  color: rgb(24, 14, 14);
   font-weight: bold;
 letter-spacing: 1.5px;
   font-size: 9vmin;
