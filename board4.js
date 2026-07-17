@@ -23,7 +23,7 @@ function initStickyNotes() {
     notes = [
       {
         id: Date.now(),
-        text: "Welcome to your Scratchpad!\n\nJot down temporary notes or links here. Click the color dot to change colors.",
+        text: "Welcome to your Scratchpad!\n\n",
         color: "yellow"
       }
     ];
