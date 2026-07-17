@@ -15,7 +15,8 @@ body {
   padding: 0;
   background-image: url("./workmodeon.jpg");
   background-size: cover;
-  background-attachment: fixed;
+background-position: center;
+background-repeat: no-repeat;
 }
 
 .container {
@@ -26,20 +27,35 @@ body {
 h1 {
   color: white;
   font-weight: bold;
-  letter-spacing: 3px;
+letter-spacing: 1.5px;
   font-size: 9vmin;
   text-align: center;
-  background-color: var(--brown-title);
-  text-shadow: 0 10px 15px rgba(0, 0, 0, 0.808), 0 6px 6px rgba(0, 0, 0, 0.788);
+  background: rgba(48,28,13,.75);
+padding:12px 18px;
+border-radius:12px;
+display:inline-block;
+  text-shadow:0 3px 8px rgba(0,0,0,.45);
 }
 
 .board {
-  background: var(--board-color);
-  box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.37);
-  backdrop-filter: blur(14.5px);
-  -webkit-backdrop-filter: blur(14.5px);
-  border: 1px solid rgba(255, 255, 255, 0.18);
-  border-radius: 3em;
+  #one{
+    width:340px;
+}
+
+#two{
+    width:320px;
+}
+
+#three{
+    width:360px;
+}
+box-shadow:0 12px 25px rgba(0,0,0,.18);
+    background: rgba(255,255,255,.78);
+    backdrop-filter: blur(6px);
+    -webkit-backdrop-filter: blur(6px);
+
+border:1px solid rgba(0,0,0,.06);
+border-radius:18px;
   padding: 2em;
   margin: 2.5em auto;
   cursor: pointer;
@@ -58,9 +74,9 @@ h1 {
 }
 
 .card {
-  background-color: var(--hero-color);
+background:#4b0f18;
   color: white;
-  font-weight: bold;
+font-weight:600;
   margin-bottom: 2em;
 }
 

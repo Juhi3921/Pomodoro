@@ -5,8 +5,8 @@
 }
 
 .main {
-  width: 90%;
-  height: 95%;
+    width: min(92%, 480px);
+  min-height: 95%;
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -61,14 +61,14 @@ input[type="checkbox"] {
 }
 
 .tasksBoard {
-  background-color: #fff;
+background:#fffdfb;
   margin: 1.5rem auto;
   width: 100%;
   padding: 0.5rem;
   padding-right: 2.1rem;
-  border-radius: 1rem;
+border-radius:16px;
   overflow: auto;
-  /*display: none;*/
+  box-shadow:0 8px 18px rgba(0,0,0,.1);
 }
 
 ul {
@@ -93,9 +93,16 @@ a {
 .delete {
   background-color: var(--hero-color);
   float: right;
-  padding: 0 0.3em;
+padding:4px 10px;
   text-align: center;
+  transition:.2s;
   color: #fff;
   cursor: pointer;
-  border-radius: 1em;
+border-radius:8px;}
+
+.delete:hover{
+    background:#530515;
+}
+.delete:active{
+    transform:scale(.95);
 }

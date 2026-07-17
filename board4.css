@@ -35,15 +35,15 @@
 
 
 .sticky-note {
-  width: 140px;
-  height: 140px;
+  width:150px;
+height:145px;
+border-radius:8px;
   padding: 10px;
   box-shadow: 0 5px 10px rgba(0, 0, 0, 0.15);
   display: flex;
   flex-direction: column;
   position: relative;
   transition: transform 0.2s, box-shadow 0.2s;
-  border-radius: 4px;
 }
 
 .sticky-note:hover {
@@ -53,11 +53,16 @@
 }
 
 /* Tilt alternate notes slightly for realistic paper look */
-.sticky-note:nth-child(even) {
-  transform: rotate(2deg);
+.sticky-note:nth-child(3n){
+    transform:rotate(1deg);
 }
-.sticky-note:nth-child(odd) {
-  transform: rotate(-1.5deg);
+
+.sticky-note:nth-child(3n+1){
+    transform:rotate(-2deg);
+}
+
+.sticky-note:nth-child(3n+2){
+    transform:rotate(.5deg);
 }
 
 .sticky-note-header {
